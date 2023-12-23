@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 
 
-
+const isEmail = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
 export default function Body() {
   const [Name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -10,7 +10,8 @@ export default function Body() {
   const [state, setState] = useState(false);
 
   const onButtonClickHandler = () => {
-    if (Name.length && email.length && password.length) {
+    let result = isEmail.test(email)
+    if (Name.length && email.length && password.length && result) {
     setState(!state);}
   };
 
